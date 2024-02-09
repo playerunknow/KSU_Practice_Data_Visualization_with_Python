@@ -5,8 +5,8 @@ import pandas as pd
 #from pywaffle import Waffle
 #import seaborn as sns
 import folium
-import plotly.graph_objects as go
-import plotly.express as px
+#import plotly.graph_objects as go
+#import plotly.express as px
 
 
 gas = pd.read_csv('gas_prices.csv')
@@ -138,5 +138,19 @@ gas = pd.read_csv('gas_prices.csv')
 #
 # plt.show()
 
+#MapMarkers
 map = folium.Map(location=[39.8283, -98.5795], zoom_start=4)
+
+USAIcon = folium.features.CustomIcon('images/Flag_of_the_United_States.png', icon_size=(40, 25))
+CanadaIcon = folium.features.CustomIcon('images/Flag_of_Canada.png', icon_size=(40, 25))
+ItalyIcon = folium.features.CustomIcon('images/Flag_of_Italy.png', icon_size=(40, 25))
+MexicoIcon = folium.features.CustomIcon('images/Flag_of_Mexico.png', icon_size=(40, 25))
+
+folium.Marker(location=[39.8283, -98.5795], zoom_start=4, popup='USA', icon=USAIcon).add_to(map)
+folium.Marker(location=[45.39066320411097, -75.69867554529563], zoom_start=10, popup='Canada', icon=CanadaIcon).add_to(map)
+folium.Marker(location=[42.883614613346026, 12.461007076203094], zoom_start=10, popup='Italy', icon=ItalyIcon).add_to(map)
+folium.Marker(location=[25.59380060850344, -102.09363803887236], zoom_start=10, popup='Mexico', icon=MexicoIcon).add_to(map)
+
 map.save('map.html')
+
+
